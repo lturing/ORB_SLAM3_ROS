@@ -1,0 +1,10 @@
+<launch>
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find orb_slam3)/rviz/orb_viz.rviz" output="log" /> 
+    
+ 	<node pkg="orb_slam3" type="ros_mono" name="orb_slam3" args="$(find orb_slam3)/Examples/Monocular/KITTI00-02.yaml $(find orb_slam3)/Vocabulary/ORBvoc.txt /home/spurs/dataset/kitti_00" output="screen" />
+    <!--
+    <node pkg="rosbag" type="play" name="playbag" args="/home/spurs/dataset/rgbd_dataset_freiburg2_large_with_loop.bag" />
+    -->
+
+</launch>
