@@ -152,6 +152,7 @@ void SlamDataPub::CloudPointMappingPub()
     {
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr globalCloud( new pcl::PointCloud<pcl::PointXYZRGB> );  
         mpPointCloudMapping->generatePointCloud(globalCloud, mpAtlas, mTrans_cam2ground);
+        //cout << "globalCloud->points.size()=" << globalCloud->points.size() << endl;
         if (globalCloud->points.size() > 0)
         {
             pcl::PCLPointCloud2 pcl_pc1;
@@ -160,12 +161,14 @@ void SlamDataPub::CloudPointMappingPub()
             allMapPoints.header.frame_id = "ground";  
             allMapPoints.header.stamp = ros::Time::now();  
 
+            //cout << "globalCloud->points.size()=" << globalCloud->points.size() << endl;
             CloudPoint_pub_.publish(allMapPoints);
         }
 
         if(CheckFinish())
             break;  
         usleep(mT*1000 / 2); 
+        //cout << "CloudPointMappingPub end" << endl;
     }
 }
 
@@ -212,18 +215,13 @@ void SlamDataPub::Run()
     DrawFrame_pub_ = it_.advertise("/frame_now", 1);
        
     thread threadCamPosePub(&SlamDataPub::TrackingDataPub,this);   
-    thread threadPointCloudPub(&SlamDataPub::PointCloudPub,this);  
     thread threadDrawFramePub(&SlamDataPub::DrawFramePub,this); 
-    
-    threadCamPosePub.join(); 
+    thread threadPointCloudPub(&SlamDataPub::PointCloudPub,this); 
+    thread threadCloudPointMappingPub(&SlamDataPub::CloudPointMappingPub, this);
+ 
     threadPointCloudPub.join();
-
-    if (mpSystem->GetSensor() == 2) // rgbd;
-    {
-        thread threadCloudPointMappingPub(&SlamDataPub::CloudPointMappingPub, this);
-        threadCloudPointMappingPub.join();
-    }
-        
+    threadCamPosePub.join(); 
+    
     SetFinish();
 }
 

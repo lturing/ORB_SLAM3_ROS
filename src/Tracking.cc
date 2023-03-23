@@ -3338,7 +3338,7 @@ void Tracking::CreateNewKeyFrame()
 
     mpLocalMapper->SetNotStop(false);
 
-    if (mSensor == System::IMU_RGBD)
+    if (mSensor == System::RGBD)
         mpSlamDataPub->getPointCloudMapping()->insertKeyFrame(pKF, mImRGB, mImD, mK, mDistCoef);
     
     mnLastKeyFrameId = mCurrentFrame.mnId;

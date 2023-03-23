@@ -3,7 +3,8 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /PointCloud21
       Splitter Ratio: 0.5
     Tree Height: 140
   - Class: rviz/Selection
@@ -23,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -35,7 +36,7 @@ Visualization Manager:
       Cell Size: 0.5
       Class: rviz/Grid
       Color: 160; 160; 164
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.029999999329447746
         Value: Lines
@@ -48,7 +49,7 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 150
       Reference Frame: ground
-      Value: true
+      Value: false
     - Alpha: 0.10000000149011612
       Axes Length: 0.20000000298023224
       Axes Radius: 0.029999999329447746
@@ -111,7 +112,7 @@ Visualization Manager:
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.009999999776482582
-      Style: Flat Squares
+      Style: Spheres
       Topic: /cloudPointMapping
       Unreliable: false
       Use Fixed Frame: true
@@ -157,7 +158,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: ground
+    Fixed Frame: vehicle
     Frame Rate: 30
   Name: root
   Tools:
@@ -181,7 +182,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 12.947375297546387
+      Distance: 4.349917411804199
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -197,9 +198,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -1.5697963237762451
+      Pitch: -0.11979718506336212
       Target Frame: <Fixed Frame>
-      Yaw: 6.129915714263916
+      Yaw: 3.389909505844116
     Saved: ~
 Window Geometry:
   Displays:

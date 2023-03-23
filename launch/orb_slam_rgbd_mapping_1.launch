@@ -1,0 +1,8 @@
+<launch>
+    <!--
+    <node pkg="rosbag" type="play" name="playbag" args="/home/spurs/dataset/rgbd_dataset_freiburg1_plant.bag" />
+    -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find orb_slam3)/rviz/orb_viz_rgbd_mapping.rviz" />
+    <node pkg="orb_slam3" type="ros_rgbd_mapping" name="orb_slam3" args="$(find orb_slam3)/Examples/RGB-D/TUM3.yaml $(find orb_slam3)/Vocabulary/ORBvoc.txt /home/spurs/dataset/rgbd_dataset_freiburg3_long_office_household" output="screen"  />
+
+</launch>

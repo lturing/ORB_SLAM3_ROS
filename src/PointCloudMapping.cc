@@ -28,14 +28,14 @@ void PointCloudMapping::insertKeyFrame(KeyFrame* kf, const cv::Mat& color, const
     
     std::vector<cv::KeyPoint> mvKeys;
     std::vector<cv::KeyPoint> mvKeysUn;
-    int stride = 3;
+    int stride = 6;
     for (int i = 0; i < color.rows; i += stride)
     {
         for (int j = 0; j < color.cols; j+= stride)
         {
             cv::KeyPoint kp;
-            kp.pt.x = i;
-            kp.pt.y = j;
+            kp.pt.x = j;
+            kp.pt.y = i;
             mvKeys.push_back(kp);
         }
     }
@@ -84,16 +84,16 @@ void PointCloudMapping::insertKeyFrame(KeyFrame* kf, const cv::Mat& color, const
             p.g = color.ptr<uchar>(m)[n*3+1];
             p.r = color.ptr<uchar>(m)[n*3+2];
             */
-            p.r = color.ptr<uchar>(m)[n*3];
+            p.b = color.ptr<uchar>(m)[n*3];
             p.g = color.ptr<uchar>(m)[n*3+1];
-            p.b = color.ptr<uchar>(m)[n*3+2];
+            p.r = color.ptr<uchar>(m)[n*3+2];
 
             cloud->points.push_back(p);
             cnt += 1;
         }
     }
 
-    cout << "v_max=" << v_max << ", v_min=" << v_min << endl; 
+    //cout << "v_max=" << v_max << ", v_min=" << v_min << endl; 
 
     cloud->width = cloud->points.size();
     cloud->height = 1;
@@ -104,6 +104,8 @@ void PointCloudMapping::insertKeyFrame(KeyFrame* kf, const cv::Mat& color, const
 
     mPointCloudDatas.push_back(pcd);
     mbUpdateCloudPoint = true;
+
+    //cout << "insert cloud" << endl;
 
 }
 
