@@ -24,7 +24,7 @@ orbslam3的ros版，主要包括：单目、双目以及rgbd稠密建图。相�
 ```
 # 安装ros
 # http://wiki.ros.org/noetic/Installation/Ubuntu
-sudo apt install sudo apt install ros-noetic-desktop-full
+sudo apt install ros-noetic-desktop-full
 
 git clone https://github.com/lturing/ORB_SLAM3_ROS.git
 cd ORB_SLAM3_ROS
@@ -32,6 +32,7 @@ chmod +x ./build.sh
 ./build.sh 
 
 # 数据集下载
+# https://www.cvlibs.net/datasets/kitti/eval_odometry.php
 # https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
 # 运行单目
