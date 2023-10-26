@@ -35,6 +35,9 @@ chmod +x ./build.sh
 # https://www.cvlibs.net/datasets/kitti/eval_odometry.php
 # https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
+# 生成associate.txt(示例)
+python evaluation/associate.py /home/spurs/dataset/rgbd_dataset_freiburg2_large_with_loop/rgb.txt /home/spurs/dataset/rgbd_dataset_freiburg2_large_with_loop/depth.txt >> associate.txt
+
 # 运行单目
 # 适当修改 launch/orb_slam_mono.launch
 chmod +x ./run_mono.sh
